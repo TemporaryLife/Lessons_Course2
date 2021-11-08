@@ -27,8 +27,6 @@ namespace ConsoleApp1
     public class TheEasiestBenchmark
     {
 
-
-
         public float DistanceClassFloat(PointClassFloat x, PointClassFloat y)
 
         {
@@ -37,10 +35,7 @@ namespace ConsoleApp1
             return (float)Math.Sqrt((X * X) + (Y * Y));
         }
 
-        
-
-
-        
+                
         public float DistanceStructFloat(PointStructFloat x, PointStructFloat y)
 
         {
@@ -77,6 +72,21 @@ namespace ConsoleApp1
         {
             DistanceStructFloat(new PointStructFloat { X = 3, Y = 2 }, new PointStructFloat { X = 2, Y = 1 });
         }
+
+
+        [Benchmark]
+        public void c()
+        {
+            DistanceStructDouble(new PointStructDouble { X = 3, Y = 2 }, new PointStructDouble { X = 2, Y = 1 });
+        }
+
+
+        [Benchmark]
+        public void d()
+        {
+            NoSQRT_DistanceStructFloat(new PointStructFloat { X = 3, Y = 2 }, new PointStructFloat { X = 2, Y = 1 });
+        }
+
 
     }
 
