@@ -70,7 +70,7 @@ namespace ConsoleApp1
         [Benchmark]
         public void a()
         {
-            DistanceClassFloat(new PointClassFloat { X = double_array, Y = 2 }, new PointClassFloat { X = 2, Y = 1 });
+            DistanceClassFloat(new PointClassFloat { X =3, Y = 2 }, new PointClassFloat { X = 2, Y = 1 });
         }
         [Benchmark]
         public void b()
