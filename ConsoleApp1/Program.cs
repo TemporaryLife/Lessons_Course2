@@ -99,13 +99,6 @@ namespace ConsoleApp1
         public static List<float> float_array=new List<float>();
         static void Main(string[] args)
         {
-            int size = 20;
-            var rnd = new Random();
-            for (int i = 0; i < size; i++)
-            {
-                double_array.Add((double)rnd.Next(100));
-                float_array.Add((float)rnd.Next(100));
-            }
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
 
         }
