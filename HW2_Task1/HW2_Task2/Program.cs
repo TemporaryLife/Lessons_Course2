@@ -11,7 +11,7 @@ namespace HW2_Task2
             public int Expected { get; set; }
             public Exception ExpectedException { get; set; }
         }
-
+//СЛОЖНОСТЬ: O(n) - прямая из за цикла while (константы отбросил)
         public static int BinarySearch(int[] inputArray, int searchValue)
         {
             if (searchValue<=0)
