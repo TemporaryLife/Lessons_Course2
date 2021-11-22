@@ -12,7 +12,7 @@ namespace Testing
 
             public Node()
             {
-                this.edges=new List<Edge>();
+                this.edges = new List<Edge>();
             }
         }
 
@@ -27,15 +27,15 @@ namespace Testing
         public class Graph
         {
             public Node head { get; set; }
-            private List<Node> All_Nodes=new List<Node>();
-            
+            private List<Node> All_Nodes = new List<Node>();
+
 
             public Graph(int value)
             {
-                          
-                this.head=new Node{Value=4};
+
+                this.head = new Node { Value = 4 };
                 All_Nodes.Add(this.head);
-                
+
             }
 
 
@@ -47,16 +47,16 @@ namespace Testing
 
             private void Add_Edge(int node_name_init, int node_name_final, int weight)
             {
-                var init_node=All_Nodes.Find(node => node.Value == node_name_init);
-                var final_node=All_Nodes.Find(node => node.Value == node_name_final);
+                var init_node = All_Nodes.Find(node => node.Value == node_name_init);
+                var final_node = All_Nodes.Find(node => node.Value == node_name_final);
 
 
                 if (All_Nodes.Exists(node => node.Value == node_name_init) &&
                     All_Nodes.Exists(node => node.Value == node_name_final))
                 {
-                    var edge=new Edge{Weight=weight, node=final_node};
+                    var edge = new Edge { Weight = weight, node = final_node };
                     init_node.edges.Add(edge);
-                    
+
                 }
                 else
                 {
@@ -67,46 +67,57 @@ namespace Testing
             }
 
             public void AddEdge(int node_name_init, int node_name_final, int weight)
-                =>Add_Edge(node_name_init, node_name_final, weight);
+                => Add_Edge(node_name_init, node_name_final, weight);
 
             public void BFS_Graph(int finding_value)
             {
-                var q=new Queue<Node>();
+                var q = new Queue<Node>();
                 q.Enqueue(head);
-                
+
                 Node buf;
 
-                while(q.Count!=0)
+                while (q.Count != 0)
                 {
-                    buf=q.Dequeue();
-                    if (buf.Value!=finding_value)
+                    buf = q.Dequeue();
+                    if (buf.Value != finding_value)
                     {
-                        for (int i=0; i<buf.edges.Count; i++)
+                        for (int i = 0; i < buf.edges.Count; i++)
                         {
                             q.Enqueue(buf.edges[i].node);
-                            
+
                         }
                     }
-                    
+
+                    Console.WriteLine(buf.Value);
+                }
+            }
+            public void DFS_Graph(int finding_value)
+            {
+                var q = new Stack<Node>();
+                q.Push(head);
+
+                Node buf;
+
+                while (q.Count != 0)
+                {
+                    buf = q.Pop();
+                    if (buf.Value != finding_value)
+                    {
+                        for (int i = 0; i < buf.edges.Count; i++)
+                        {
+                            q.Push(buf.edges[i].node);
+
+                        }
+                    }
+
                     Console.WriteLine(buf.Value);
                 }
             }
         }
-        
+
         static void Main(string[] args)
         {
-            Graph Graph1=new Graph(4);
-            Graph1.AddNode(5);
-            Graph1.AddEdge(4,5,1);
-            Graph1.AddNode(7);
-            Graph1.AddEdge(4,7,1);
-            Graph1.AddNode(11);
-            Graph1.AddEdge(7,11,1);
-            Graph1.AddNode(9);
-            Graph1.AddEdge(4,9,1);
-            
-            Graph1.BFS_Graph(8);
-            
+
         }
 
 
